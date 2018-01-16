@@ -69,6 +69,18 @@ class Listogram(list):
 
         return result
 
+    def writeToFile(self, filePath):
+        """
+
+        :param filePath:
+        :return:
+        """
+        file = open(filePath, "w")
+        for entry in self:
+            file.write("'{}' repeats {} times\n".format(entry[0], entry[1]))
+        file.close()
+
+
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
@@ -82,6 +94,7 @@ def print_histogram(word_list):
 
     print(histogram.sorted())
     print(histogram)
+    histogram.writeToFile("textfile.txt")
 
 
 def main():
