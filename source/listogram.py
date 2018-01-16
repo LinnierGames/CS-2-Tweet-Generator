@@ -19,7 +19,6 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
         title = str(word)
         index = self._index(title)
         if index is not None:
@@ -32,14 +31,12 @@ class Listogram(list):
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
         index = self._index(word)
 
         return 0 if index is None else self[index][1]
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
         title = str(word)
 
         return True if self._index(title) is not None else False
@@ -47,7 +44,6 @@ class Listogram(list):
     def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
         found_index = None
         for i, element in enumerate(self):
             if element[0] == target:
@@ -55,6 +51,23 @@ class Listogram(list):
                 break
 
         return found_index
+
+    def sorted(self):
+        """
+        using bubble sort, sort by the count of repetitions of a word in a list
+        :return: a new list of the sorted version of self
+        """
+        result = list(self)
+        for iteration in range(len(result) - 1, 0, -1):
+            for i in range(iteration):
+                a = result[i]
+                b = result[i + 1]
+                if a[1] > b[1]:
+                    temp = result[i]
+                    result[i] = result[i + 1]
+                    result[i + 1] = temp
+
+        return result
 
 
 def print_histogram(word_list):
@@ -66,7 +79,9 @@ def print_histogram(word_list):
     for word in word_list[-2:]:
         freq = histogram.frequency(word)
         print('{!r} occurs {} times'.format(word, freq))
-    print()
+
+    print(histogram.sorted())
+    print(histogram)
 
 
 def main():
