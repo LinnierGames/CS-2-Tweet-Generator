@@ -64,14 +64,14 @@ class Stochastic(Listogram):
                 cumulative_sum += tuple_word_n_frequency[1]
 
         # must find a word within the random_float value
-        assert matching_word is not None
+        # assert matching_word is not None
 
         return matching_word
 
 
+if __name__ == '__main__':
+    str_sentence = "one fish two fish red fish four fish"
+    arr_sentence = str_sentence.split()
 
-str_sentence = "one fish two fish red fish four fish"
-arr_sentence = str_sentence.split()
-
-stat = Stochastic(arr_sentence)
-print(stat.choose_random_word_from_frequency())
+    stat = Stochastic(arr_sentence)
+    print(stat.choose_random_word_from_frequency())
