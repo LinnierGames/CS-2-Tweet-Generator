@@ -40,7 +40,7 @@ class Markov(object):
 
         # pick a random starting word
         sentence = current_markov = self.words.keys()[random.randint(0,len(self.words) - 1)]
-        
+
         while current_markov is not None:
             stochastic = self.words[current_markov]
             current_markov = stochastic.choose_random_word_from_frequency()
