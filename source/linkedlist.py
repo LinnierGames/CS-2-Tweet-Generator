@@ -12,17 +12,27 @@ class Node(object):
 		"""Return a string representation of this node."""
 		return 'Node({!r})'.format(self.data)
 
+class ListIterator(object):
+	def __iter__(self):
+
 
 class LinkedList(object):
+
+	def __getitem__(self, item):
+		return self.head
 
 	def __init__(self, items=None):
 		"""Initialize this linked list and append the given items, if any."""
 		self.head = None  # First node
 		self.tail = None  # Last node
+		self._length = 0
 		# Append given items
 		if items is not None:
 			for item in items:
 				self.append(item)
+
+	def __len__(self):
+		return self._length
 
 	def __str__(self):
 		"""Return a formatted string representation of this linked list."""
@@ -54,13 +64,7 @@ class LinkedList(object):
 
 	def length(self):
 		"""Return the length of this linked list by traversing its nodes"""
-		length = 0
-		iterator = self.head
-		while iterator is not None:
-			length += 1
-			iterator = iterator.next
-
-		return length
+		return self._length
 
 	def append(self, item):
 		"""Insert the given item at the tail of this linked list."""
@@ -72,6 +76,8 @@ class LinkedList(object):
 			self.tail.next = node
 			self.tail = node
 
+		self._length += 1
+
 	def prepend(self, item):
 		"""Insert the given item at the head of this linked list."""
 		node = Node(item)
@@ -79,6 +85,8 @@ class LinkedList(object):
 		self.head = node
 		if self.tail is None:
 			self.tail = node
+
+		self._length += 1
 
 	def find(self, quality):
 		"""Return an item from this linked list satisfying the given quality."""
@@ -115,12 +123,17 @@ class LinkedList(object):
 					prev_pointer.next = current_pointer.next
 				current_pointer.next = None
 
-				return True
+				break
 			else:
 				prev_pointer = current_pointer
 				current_pointer = current_pointer.next
 
-		raise ValueError('Item not found: {}'.format(item))
+		if current_pointer is None:
+			raise ValueError('Item not found: {}'.format(item))
+		else:
+			self._length -= 1
+
+			return True
 
 
 def test_linked_list():
