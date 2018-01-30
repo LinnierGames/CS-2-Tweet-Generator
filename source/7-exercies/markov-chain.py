@@ -1,16 +1,14 @@
 import sys
+import re
 sys.path.insert(0,"../4-exercies")
-import random
 from stochastic import Stochastic
 
 
 class Markov(object):
     punctuation = [".","?","!"]
 
-    def __init__(self, list_words=None):
-
-        # TODO: separate ending puncuation from words in the list_words, such as . ? and !
-        self.corpus = list_words
+    def __init__(self, words):
+        self.corpus = re.findall(r"[\w']+|[.,!?;]", words)
         self.words = {} # [String: Stochastic]
 
         # iterate corpus
@@ -54,7 +52,6 @@ class Markov(object):
             stochastic_for_current_word.add_count(adjacent_word)
             previous_word = current_word
 
-
     def generate_a_sentence(self):
         sentence = ""
 
@@ -64,14 +61,15 @@ class Markov(object):
         # pick a random starting word
         current_markov_word = None
 
-        while True:
+        while True: # do-while
             stochastic = self.words[current_markov_word]
             current_markov_word = stochastic.choose_random_word_from_frequency()
+
             # check: end of sentence
             if current_markov_word is None or current_markov_word in Markov.punctuation:
                 # check: by a puncuation? if so, add it to the sentence
                 if current_markov_word in Markov.punctuation:
-                    sentence += " " + current_markov_word
+                    sentence += current_markov_word
                 break
             else:
                 sentence += " " + current_markov_word
@@ -80,6 +78,6 @@ class Markov(object):
 
 
 if __name__ == '__main__':
-    m = Markov("one fish two . fish . red . fish blue ! fish .".split())
+    m = Markov("one fish two . fish . red . fish blue ! fish .")
     print(m.words)
     print(m.generate_a_sentence())
