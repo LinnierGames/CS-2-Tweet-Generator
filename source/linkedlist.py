@@ -12,24 +12,33 @@ class Node(object):
 		"""Return a string representation of this node."""
 		return 'Node({!r})'.format(self.data)
 
-class ListIterator(object):
-	def __iter__(self):
-
 
 class LinkedList(object):
-
-	def __getitem__(self, item):
-		return self.head
 
 	def __init__(self, items=None):
 		"""Initialize this linked list and append the given items, if any."""
 		self.head = None  # First node
 		self.tail = None  # Last node
 		self._length = 0
+		self.iterator = Node
 		# Append given items
 		if items is not None:
 			for item in items:
 				self.append(item)
+
+	def __iter__(self):
+		self.iterator = self.head
+
+		return self
+
+	def next(self):
+		if self.iterator is None:
+			raise StopIteration
+
+		value = self.iterator.data
+		self.iterator = self.iterator.next
+
+		return value
 
 	def __len__(self):
 		return self._length
@@ -42,6 +51,36 @@ class LinkedList(object):
 	def __repr__(self):
 		"""Return a string representation of this linked list."""
 		return 'LinkedList({!r})'.format(self.items())
+
+	def _pointer_at(self, index):
+		curr_node = self.head
+
+		while curr_node is not None:
+			if index == 0:
+				break
+			else:
+				index -= 1
+
+			curr_node = curr_node.next
+
+		if curr_node is not None:
+			return curr_node
+		else:
+			raise IndexError
+
+	def __setitem__(self, key, value):
+		try:
+			ptr = self._pointer_at(key)
+			ptr.data = value
+
+		except IndexError:
+			raise IndexError
+
+	def __getitem__(self, item):
+		try:
+			return self._pointer_at(item).data
+		except IndexError:
+			raise IndexError
 
 	def items(self):
 		"""Return a list (dynamic array) of all items in this linked list.
@@ -164,5 +203,21 @@ def test_linked_list():
 		print('length: {}'.format(ll.length()))
 
 
+def test_iterator():
+	ll = LinkedList()
+	ll.append("A")
+	ll.append("B")
+	ll.append("C")
+
+	for i in ll:
+		print(i)
+
+	print(ll[2])
+	ll[2] = 'Y'
+	print(ll[2])
+
+
 if __name__ == '__main__':
 	test_linked_list()
+
+	test_iterator()
