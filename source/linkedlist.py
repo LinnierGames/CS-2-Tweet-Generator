@@ -150,7 +150,7 @@ class LinkedList(object):
 		current_pointer = self.head
 
 		while current_pointer is not None:
-			if current_pointer.data is item:
+			if current_pointer.data == item:
 				if current_pointer is self.head:
 					if self.head is self.tail:
 						self.tail = None
