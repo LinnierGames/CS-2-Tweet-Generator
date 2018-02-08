@@ -14,6 +14,7 @@ class OrderedMarkovChain(object):
     def __init__(self, words, order):
         self.corpus = re.findall(r"[\w']+|[.,!?;]", words)
         self.words = HashTable(32)
+        self.order = order
 
         # iterate corpus
         previous_word = None
@@ -22,7 +23,7 @@ class OrderedMarkovChain(object):
 
             def get_adjacent_word():
                 try:
-                    return self.corpus[index + 1]
+                    return self.corpus[index + self.order]
                 except IndexError:
                     # end of list_words, thus end of sentence
                     return None
@@ -82,5 +83,5 @@ class OrderedMarkovChain(object):
 
 
 if __name__ == '__main__':
-    m = OrderedMarkovChain("one fish two . fish . red . fish blue ! fish", 1)
+    m = OrderedMarkovChain("one fish one", 1)
     print(m.generate_a_sentence())

@@ -32,7 +32,7 @@ class HashTable(object):
         return self.contains(item)
 
     def __len__(self):
-        return [len(bucket) for bucket in self.buckets]
+        return sum([len(bucket) for bucket in self.buckets])
 
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored."""
