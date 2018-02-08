@@ -88,12 +88,12 @@ class HashTable(object):
         index = self._bucket_index(key)
         bucket = self.buckets[index]
 
+        # search for the node and delete it if it exist
         possible_item = bucket.find(lambda item: item[0] == key)
         if possible_item is not None:
             bucket.delete(possible_item)
 
         bucket.append((key, value))
-
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.

@@ -5,11 +5,11 @@ from stochastic import Stochastic
 
 
 class Markov(object):
-    punctuation = [".","?","!"]
+    end_punctuation = [".","?","!"]
 
     def __init__(self, words):
         self.corpus = re.findall(r"[\w']+|[.,!?;]", words)
-        self.words = {} # [String: Stochastic]
+        self.words = {}  # [String: Stochastic]
 
         # iterate corpus
         previous_word = None
@@ -23,10 +23,8 @@ class Markov(object):
                     # end of list_words, thus end of sentence
                     return None
 
-            # if current_word is an ending puncation, then adjacent_word is None
-
-            # check: at beginning of sentence
-            if index == 0 or previous_word in Markov.punctuation:
+            # check: at beginning of sentence, create/append current_word to self.words[None]
+            if index == 0 or previous_word in Markov.end_punctuation:
                 stochastic_for_beginning_of_sentence = self.words.get(None, None)
                 if stochastic_for_beginning_of_sentence is None:
                     stochastic_for_beginning_of_sentence = Stochastic()
@@ -37,8 +35,8 @@ class Markov(object):
             # grab adjacent word, can be None to represent end of the sentence
             adjacent_word = get_adjacent_word()
 
-            # check: at end of sentence or
-            if current_word in Markov.punctuation:
+            # if current_word is an ending puncuation, then adjacent_word is None
+            if current_word in Markov.end_punctuation:
                 adjacent_word = None
                 continue
 
@@ -66,9 +64,9 @@ class Markov(object):
             current_markov_word = stochastic.choose_random_word_from_frequency()
 
             # check: end of sentence
-            if current_markov_word is None or current_markov_word in Markov.punctuation:
+            if current_markov_word is None or current_markov_word in Markov.end_punctuation:
                 # check: by a puncuation? if so, add it to the sentence
-                if current_markov_word in Markov.punctuation:
+                if current_markov_word in Markov.end_punctuation:
                     sentence += current_markov_word
                 break
             else:
@@ -78,6 +76,6 @@ class Markov(object):
 
 
 if __name__ == '__main__':
-    m = Markov("one fish two . fish . red . fish blue ! fish .")
+    m = Markov("one fish two . fish . red . fish blue ! fish")
     print(m.words)
     print(m.generate_a_sentence())
