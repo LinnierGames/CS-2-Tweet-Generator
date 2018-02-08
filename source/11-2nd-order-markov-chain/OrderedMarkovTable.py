@@ -60,7 +60,7 @@ class OrderedMarkovChain(object):
     def generate_a_sentence(self):
         sentence = ""
 
-        if len(self.corpus) == 0:
+        if len(self.words) == 0:
             return sentence
 
         current_markov_word = None
