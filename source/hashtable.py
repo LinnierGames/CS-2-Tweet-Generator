@@ -19,6 +19,18 @@ class HashTable(object):
         """Return a string representation of this hash table."""
         return 'HashTable({!r})'.format(self.items())
 
+    def __getitem__(self, item):
+        try:
+            return self.get(item)
+        except KeyError:
+            raise KeyError('Item not found: {}'.format(item))
+
+    def __setitem__(self, key, value):
+        self.set(key, value)
+
+    def __contains__(self, item):
+        return self.contains(item)
+
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored."""
         # Calculate the given key's hash code and transform into bucket index

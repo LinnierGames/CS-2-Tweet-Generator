@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="361c43ae-7440-4737-ac75-586c4f183bd6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/source/7-exercies/markov-chain.py" afterPath="$PROJECT_DIR$/source/7-exercies/markov-chain.py" />
       <change beforePath="$PROJECT_DIR$/source/hashtable.py" afterPath="$PROJECT_DIR$/source/hashtable.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,22 +16,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MarkoffTable.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/11-2nd-order-markoff-chain/MarkoffTable.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="920">
+              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="hashtable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/hashtable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2145">
-              <caret line="143" column="21" lean-forward="true" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+            <state relative-caret-position="405">
+              <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="markov-chain.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="markov-chain.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/7-exercies/markov-chain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="203">
+              <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="74" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +77,9 @@
         <option value="$PROJECT_DIR$/source/linkedlist_test.py" />
         <option value="$PROJECT_DIR$/source/linkedlist.py" />
         <option value="$PROJECT_DIR$/source/hashtable_test.py" />
-        <option value="$PROJECT_DIR$/source/hashtable.py" />
         <option value="$PROJECT_DIR$/source/7-exercies/markov-chain.py" />
+        <option value="$PROJECT_DIR$/source/hashtable.py" />
+        <option value="$PROJECT_DIR$/source/11-2nd-order-markoff-chain/MarkoffTable.py" />
       </list>
     </option>
   </component>
@@ -119,6 +132,12 @@
               <item name="CS-2-Tweet-Generator" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="7-exercies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS-2-Tweet-Generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS-2-Tweet-Generator" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="11-2nd-order-markoff-chain" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -199,13 +218,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/4-exercies/listogram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="118" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/7-exercies/markov-chain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -509,19 +521,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/7-exercies/markov-chain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="74" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/hashtable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="143" column="21" lean-forward="true" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+        <state relative-caret-position="405">
+          <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/7-exercies/markov-chain.py">
+    <entry file="file://$PROJECT_DIR$/source/11-2nd-order-markoff-chain/MarkoffTable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="920">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
