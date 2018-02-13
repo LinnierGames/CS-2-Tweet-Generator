@@ -48,7 +48,7 @@ class OrderedMarkovChain(object):
                         temp_list = current_element_list[1:] # current_element without the first index
                         temp_element = ' '.join(temp_list)
 
-                        return temp_element + ' ' + adjacent_word if len(temp_element) != 0 else adjacent_word
+                        return adjacent_word
                     except IndexError:
                         # end of list_words, thus end of sentence
                         return None
@@ -84,10 +84,12 @@ class OrderedMarkovChain(object):
         current_markov_element = self.words[None].choose_random_word_from_frequency()
         sentence += current_markov_element
 
-        while True: # do-while
-            print("s: {}".format(sentence))
-            print("k: {}".format(current_markov_element))
-            stochastic = self.words[current_markov_element]
+        prev = current_markov_element.split()[-2]
+        curr = current_markov_element.split()[-1]
+
+        while True:  # do-while
+            key = prev + " " + curr
+            stochastic = self.words[key]
             current_markov_element = stochastic.choose_random_word_from_frequency()
 
             # check: end of sentence
@@ -98,14 +100,15 @@ class OrderedMarkovChain(object):
                 break
             else:
                 pass
-            current_markov_element_list = current_markov_element.split()
-            sentence += " " + current_markov_element_list[-1]
+            sentence += " " + current_markov_element
 
+            prev = curr
+            curr = current_markov_element
 
         return sentence
 
 
 if __name__ == '__main__':
-    m = OrderedMarkovChain("one fish two fish red fish . blue fish .", 2)
+    m = OrderedMarkovChain("one fish two fish red fish. blue fish.", 2)
     print(m.words)
     print("Sentence: {}".format(m.generate_a_sentence()))
